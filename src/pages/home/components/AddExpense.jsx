@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function AddExpense({ expenses, AddExpenseFunc }) {
+function AddExpense({ setExpensesContext }) {
   const [form, setForm] = useState(false);
+  const [Error, setError] = useState("");
   const [formData, setFormData] = useState({
-    id: new Date().getTime(),
     title: "",
     amount: "",
     date: "",
@@ -14,34 +14,40 @@ function AddExpense({ expenses, AddExpenseFunc }) {
     setForm((prevState) => !prevState);
   };
 
-  const AddExpense = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    expenses.push(formData);
-    AddExpenseFunc(expenses);
+    const { title, amount, date } = formData;
+    if (!title || !amount || !date) {
+      setError("please fill all inputs");
+      return;
+    }
+    setExpensesContext((prevExpensesContext) => [
+      ...prevExpensesContext,
+      formData,
+    ]);
   };
 
-  const handleChange = (e) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [e.target.name]: e.target.value,
-    }));
+  const handleChange = (target) => {
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
   };
 
   return (
     <section className="bg-violet-600 rounded w-full flex justify-center p-3 transition-all">
       {form ? (
         <div className="w-full">
-          <form onSubmit={AddExpense} className="grid grid-cols-2 gap-3">
+          <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
             <div className="flex flex-col">
               <label className="font-medium mb-1" htmlFor="title">
                 title
               </label>
               <input
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target)}
                 className="p-2 rounded-md"
                 type="text"
                 name="title"
-                value={formData.title}
               />
             </div>
             <div className="flex flex-col">
@@ -49,11 +55,10 @@ function AddExpense({ expenses, AddExpenseFunc }) {
                 amount
               </label>
               <input
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target)}
                 className="p-2 rounded-md"
                 type="number"
                 name="amount"
-                value={formData.amount}
               />
             </div>
             <div className="flex flex-col">
@@ -61,13 +66,13 @@ function AddExpense({ expenses, AddExpenseFunc }) {
                 date
               </label>
               <input
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target)}
                 className="p-2 rounded-md"
                 type="date"
                 name="date"
-                value={formData.date}
               />
             </div>
+            <p className="col-span-2 text-red-400 text-center">{Error}</p>
             <div className="flex justify-end gap-3 mt-5 col-span-2">
               <button
                 onClick={toggleForm}
@@ -86,7 +91,10 @@ function AddExpense({ expenses, AddExpenseFunc }) {
           </form>
         </div>
       ) : (
-        <button onClick={toggleForm} className="px-3 py-2 bg-violet-900">
+        <button
+          onClick={toggleForm}
+          className="px-3 py-2 bg-violet-900 rounded-md"
+        >
           Add new Expense
         </button>
       )}

@@ -3,17 +3,11 @@ import AddExpense from "./components/AddExpense";
 import DisplayExpenses from "./components/DisplayExpenses";
 
 function Home() {
-  const [expenses, setExpenses] = useState([
-    { id: 1, title: "Error tenetur ipsum ", amount: "96", date: "2010-09-15" },
-  ]);
-  function AddExpenseFunc(newExpenses) {
-    setExpenses(newExpenses);
-    console.log(newExpenses);
-  }
+  const [expensesContext, setExpensesContext] = useState([]);
   return (
-    <div className="w-1/2 mx-auto py-10">
-      <AddExpense AddExpenseFunc={AddExpenseFunc} expenses={expenses} />
-      <DisplayExpenses expenses={expenses} />
+    <div className="w-10/12 md:w-3/4 lg:w-1/2 mx-auto py-10">
+      <AddExpense setExpensesContext={setExpensesContext} />
+      <DisplayExpenses expensesContext={expensesContext} />
     </div>
   );
 }

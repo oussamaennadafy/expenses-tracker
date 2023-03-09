@@ -1,12 +1,12 @@
 import Expense from "./components/Expense";
 
-function Expenses({ expenses }) {
+function Expenses({ expensesContext }) {
   return (
     <section className="flex flex-col gap-1">
-      {expenses.map((expense) => {
+      {expensesContext?.map((expense, id) => {
         return (
           <Expense
-            key={expense.id}
+            key={id}
             title={expense.title}
             date={expense.date}
             amount={expense.amount}
