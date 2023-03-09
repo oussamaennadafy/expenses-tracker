@@ -45,6 +45,7 @@ function AddExpense({ setExpensesContext }) {
               </label>
               <input
                 onChange={(e) => handleChange(e.target)}
+                value={formData.title}
                 className="p-2 rounded-md"
                 type="text"
                 name="title"
@@ -56,6 +57,7 @@ function AddExpense({ setExpensesContext }) {
               </label>
               <input
                 onChange={(e) => handleChange(e.target)}
+                value={formData.amount}
                 className="p-2 rounded-md"
                 type="number"
                 name="amount"
@@ -67,6 +69,7 @@ function AddExpense({ setExpensesContext }) {
               </label>
               <input
                 onChange={(e) => handleChange(e.target)}
+                value={formData.date}
                 className="p-2 rounded-md"
                 type="date"
                 name="date"
