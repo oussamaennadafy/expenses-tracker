@@ -1,10 +1,18 @@
 import Expense from "./components/Expense";
 
-function Expenses() {
+function Expenses({ expenses }) {
   return (
     <section className="flex flex-col gap-1">
-      <Expense />
-      <Expense />
+      {expenses.map((expense) => {
+        return (
+          <Expense
+            key={expense.id}
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+          />
+        );
+      })}
     </section>
   );
 }
