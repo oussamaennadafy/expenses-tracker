@@ -1,10 +1,9 @@
-function filter({ year, setYear }) {
+function filter({ setYear }) {
   return (
     <header className="flex justify-between items-center">
       <p>Filter By Year</p>
       <select
         onChange={(e) => setYear(e.target.value)}
-        value={year}
         className="px-5 py-2 cursor-pointer rounded text-black"
       >
         <option value="all the time">all the time</option>

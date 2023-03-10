@@ -25,6 +25,15 @@ function AddExpense({ setExpensesContext }) {
       ...prevExpensesContext,
       formData,
     ]);
+
+    /* clear form  */
+    setFormData({
+      title: "",
+      amount: "",
+      date: "",
+    });
+    /* clear error message */
+    setError("");
   };
 
   const handleChange = (target) => {
@@ -35,7 +44,7 @@ function AddExpense({ setExpensesContext }) {
   };
 
   return (
-    <section className="bg-violet-600 rounded w-full flex justify-center p-3 transition-all">
+    <section className="bg-violet-600 rounded w-full flex justify-center p-3 transition-all duration-500">
       {form ? (
         <div className="w-full">
           <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
