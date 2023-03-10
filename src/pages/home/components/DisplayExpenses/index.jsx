@@ -4,7 +4,7 @@ import Expenses from "./components/Expenses";
 import { useEffect, useState } from "react";
 
 function DisplayExpenses({ expensesContext }) {
-  const [year, setYear] = useState(2023);
+  const [year, setYear] = useState("all the time");
 
   return (
     <section className="mt-6 bg-gray-700 text-white rounded w-full p-3 flex flex-col gap-5">

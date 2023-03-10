@@ -1,14 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Expense from "./components/Expense";
 
 function Expenses({ expensesContext, year }) {
-  useEffect(() => {
-    console.log(expensesContext);
-  }, [expensesContext, year]);
   return (
     <section className="flex flex-col gap-1">
       {expensesContext
-        ?.filter((expense) => expense.date.split("-")[0] === year)
+        ?.filter((expense) => {
+          if (year === "all the time") return true;
+          else return expense.date.split("-")[0] == year;
+        })
         ?.map((expense, id) => {
           return (
             <Expense
