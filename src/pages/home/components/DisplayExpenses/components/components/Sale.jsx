@@ -1,4 +1,4 @@
-function Expense({ title, amount, date }) {
+function Sale({ title, amount, date }) {
   date = date.split("-");
   const months = [
     "January",
@@ -29,4 +29,4 @@ function Expense({ title, amount, date }) {
   );
 }
 
-export default Expense;
+export default Sale;

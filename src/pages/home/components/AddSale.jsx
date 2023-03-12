@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function AddExpense({ setExpensesContext }) {
+function Addsale({ setsalesContext }) {
   const [form, setForm] = useState(false);
   const [Error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -21,10 +21,7 @@ function AddExpense({ setExpensesContext }) {
       setError("please fill all inputs");
       return;
     }
-    setExpensesContext((prevExpensesContext) => [
-      ...prevExpensesContext,
-      formData,
-    ]);
+    setsalesContext((prevsalesContext) => [...prevsalesContext, formData]);
 
     /* clear form  */
     setFormData({
@@ -97,7 +94,7 @@ function AddExpense({ setExpensesContext }) {
                 type="submit"
                 className="px-3 py-2 bg-violet-900 rounded-md text-white"
               >
-                Add Expense
+                Add sale
               </button>
             </div>
           </form>
@@ -107,11 +104,11 @@ function AddExpense({ setExpensesContext }) {
           onClick={toggleForm}
           className="px-3 py-2 bg-violet-900 rounded-md"
         >
-          Add new Expense
+          Add new sale
         </button>
       )}
     </section>
   );
 }
 
-export default AddExpense;
+export default Addsale;
