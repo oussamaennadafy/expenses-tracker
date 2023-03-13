@@ -1,6 +1,10 @@
+<<<<<<< HEAD:src/pages/home/components/DisplayExpenses/components/components/Expense.jsx
 import { useEffect } from "react";
 
 function Expense({ title, amount, date }) {
+=======
+function Sale({ title, amount, date }) {
+>>>>>>> ef6f6876767c80d684f716fbf86fd34464b26879:src/pages/home/components/DisplayExpenses/components/components/Sale.jsx
   date = date.split("-");
   const months = [
     "January",
@@ -32,4 +36,4 @@ function Expense({ title, amount, date }) {
   );
 }
 
-export default Expense;
+export default Sale;

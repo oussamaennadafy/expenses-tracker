@@ -1,6 +1,6 @@
 import Month from "./components/Month";
 
-function Months({ expensesContext }) {
+function Months({ salesContext }) {
   const months = [
     "jan",
     "Feb",
@@ -17,10 +17,9 @@ function Months({ expensesContext }) {
   ];
   const MonthsComponents = months.map((month, i) => {
     const percentage =
-      (expensesContext.filter(
-        (expense) => Number(expense.date.split("-")[1]) === i + 1
-      ).length /
-        (expensesContext.length || 1)) *
+      (salesContext.filter((sale) => Number(sale.date.split("-")[1]) === i + 1)
+        .length /
+        (salesContext.length || 1)) *
       100;
     return <Month name={month} percentage={percentage} key={month} />;
   });
