@@ -22,8 +22,8 @@ function AddExpense({ setExpensesContext }) {
       return;
     }
     setExpensesContext((prevExpensesContext) => [
-      ...prevExpensesContext,
       formData,
+      ...prevExpensesContext,
     ]);
 
     /* clear form  */
